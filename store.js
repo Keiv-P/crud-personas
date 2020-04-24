@@ -10,14 +10,8 @@ const store = new Vuex.Store({
         persona:[]
     },
     mutations:{
-        submit: function(){
-            this.persona.push({
-                ci: this.ci,
-                nombre: this.nombre,
-                apellido: this.apellido,
-                sexo: this.sexo,
-                correo: this.correo,
-            });
+        submit: function(state,persona){
+            state.persona.push(persona)
             localStorage.setItem('persona', JSON.stringify(this.persona));
 
         },

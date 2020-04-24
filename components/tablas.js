@@ -69,7 +69,17 @@ Vue.component('Tabla', {
     </div> 
     `,
     computed: {
-        personas: () => store.state.persona,
+        persona:{
+            get(){
+                return{
+        ci: store.state.ci,
+        nombre: store.state.nombre,
+        apellido: store.state.apellido,
+        sexo: store.state.sexo,
+        correo: store.state.correo
+        }
+    }
+},
         act: () => store.state.act
     },
 })

@@ -14,7 +14,7 @@ Vue.component('Modal',{
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="well well-sm">
-                                        <form class="form-horizontal" method="post">
+                                        <form class="form-horizontal" method="post"  @submit.prevent="submit">
                                             <fieldset>
                                                 <legend class="text-center header">Datos</legend>
                                     
@@ -30,7 +30,7 @@ Vue.component('Modal',{
                                                         </div>          
                                                         <div class="col-md-offset-2">
                                                             <div class="form-group">  
-                                                                <input id="cedula" name="name" type="textr" v-model="ci" placeholder="Cedula" class="form-control" />
+                                                                <input id="cedula" name="name" type="textr" v-model="persona.ci" placeholder="Cedula" class="form-control" />
                                                              </div>
                                                         </div>
                                                     </div>
@@ -38,12 +38,12 @@ Vue.component('Modal',{
                                                     <div class="row ">  
                                                         <div class="form-group">
                                                             <div class="col-md">
-                                                                <input id="fname" name="name" type="text"   placeholder="Nombre"              v-model="nombre"    class="form-control" />
+                                                                <input id="fname" name="name" type="text"   placeholder="Nombre"v-model="persona.nombre"    class="form-control" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="col-md">
-                                                                <input id="lname" name="name" type="text"   placeholder="Apellido"                    v-model="apellido" class="form-control" />
+                                                                <input id="lname" name="name" type="text"   placeholder="Apellido" v-model="persona.apellido" class="form-control" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -51,14 +51,14 @@ Vue.component('Modal',{
 
                                                     <div class="col-md-8">  
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio"                   name="inlineRadioOptions" id="inlineRadio1" value="option1" />
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
                                                             <label class="form-check-label" for="inlineRadio1">Masculino</label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio"                   name="inlineRadioOptions" id="inlineRadio2" value="option2" />
+                                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
                                                             <label class="form-check-label" for="inlineRadio2">Femenino</label>
                                                         </div>
-                                                    </div>
+                                                     </div>
                                       
             
                                                     <div class="form-group">
@@ -66,12 +66,12 @@ Vue.component('Modal',{
                                                         <path d="M.05 3.555L8 8.414l7.95-4.859A2 2 0 0014 2H2A2 2 0 00.05 3.555zM16 4.697l-5.875 3.59L16 11.743V4.697zm-.168 8.108L9.157 8.879 8 9.586l-1.157-.707-6.675 3.926A2 2 0 002 14h12a2 2 0 001.832-1.195zM0 11.743l5.875-3.456L0 4.697v7.046z"/>
                                                         </svg></span>                                     
                                                         <div class="col-mx-5 md-6">
-                                                            <input id="email" name="email" type="text" placeholder="Correo" v-model="correo" class="form-control" />
+                                                            <input id="email" name="email" type="text" placeholder="Correo" v-model="persona.correo" class="form-control" />
                                                         </div>
                                                     </div>           
                                                     <div class="form-group">
                                                         <div class="col-md-12 text-center">
-                                                            <button type="submit" @click="submit" class="btn btn-primary btn-lg">Submit</button>
+                                                            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -87,15 +87,24 @@ Vue.component('Modal',{
         </div>
     `,
     computed:{
-        ci: () => store.state.ci,
-        nombre: () => store.state.nombre,
-        apellido: () => store.state.apellido,
-        sexo: () => store.state.sexo,
-        correo: () => store.state.correo
+        persona:{
+            get(){
+                return{
+        ci: store.state.ci,
+        nombre: store.state.nombre,
+        apellido: store.state.apellido,
+        sexo: store.state.sexo,
+        correo: store.state.correo
+        }
+    }
+}
         // ...Vuex.mapState(['ci','nombre', 'correo', 'apellido', 'sexo'])
     },
     methods:{
-        submit: () => store.mutations.submit
+        submit() {
+            store.commit('submit')
+        }
+
         // ...Vuex.mapMutations(['submit']),
     }
 })
