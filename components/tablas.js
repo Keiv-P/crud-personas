@@ -1,9 +1,9 @@
-Vue.component('Table', {
+Vue.component('Tabla', {
     template: /*html*/ `
         <div class="container">
         <caption><h4> Personas </h4></caption>
         <hr>
-          <table class="table table-responsive table-striped">
+          <table class="table table-striped">
               <thead>
                 <tr>
                     <th scope="col">CI</th>
@@ -16,14 +16,14 @@ Vue.component('Table', {
              </thead>
         <tbody>
         <tr         v-for="(persona, index) in personas">
-        <td>            {{ personas.ci }}</td>
+        <td>            {{ persona.ci }}</td>
   
       <td>            
             <span v-if="act && idac == index">
                 <input v-model="nombreA" type="text" class="form-control">
             </span>
             <span v-else>
-                {{ personas.nombre }}
+                {{ persona.nombre }}
             </span>
         </td>
   
@@ -32,7 +32,7 @@ Vue.component('Table', {
                 <input v-model="apellidoA" type="text" class="form-control">
             </span>
             <span v-else>
-                {{ personas.apellido }}
+                {{ persona.apellido }}
             </span>
         </td>
   
@@ -40,16 +40,16 @@ Vue.component('Table', {
                           <span v-if="act && idac == index">
                                 ut v-model="sexoA" type="text" class="form-control">
                            </span>
-                          <span v-else>
-                                ersonas.sexo }}
+                          <span>
+                               {{ persona.sexo }}
                            </span>
-                        >
+                        
                 <td>            
             <span v-if="act && idac == index">
                             <input v-model="edadActualizar" type="text" class="form-control">
             </span>
             <span v-else>
-                            {{ personas.correo }}
+                            {{ persona.correo }}
             </span>
         </td>
         <td>        
@@ -68,6 +68,8 @@ Vue.component('Table', {
         </table>
     </div> 
     `,
-  
-   
+    computed: {
+        personas: () => store.state.persona,
+        act: () => store.state.act
+    },
 })
