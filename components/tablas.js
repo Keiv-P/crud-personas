@@ -15,7 +15,7 @@ Vue.component('Tabla', {
                 </tr>
              </thead>
         <tbody>
-        <tr         v-for="(persona, index) in personas">
+        <!-- <tr         v-for="(persona, index) in personas">
         <td>            {{ persona.ci }}</td>
   
       <td>            
@@ -63,23 +63,9 @@ Vue.component('Tabla', {
                             <button @click="delet(index)" class="btn btn-danger">Borrar</button>
             </span>
         </td>
-    </tr>
+    </tr> -->
                   </tbody>
         </table>
     </div> 
     `,
-    computed: {
-        persona:{
-            get(){
-                return{
-        ci: store.state.ci,
-        nombre: store.state.nombre,
-        apellido: store.state.apellido,
-        sexo: store.state.sexo,
-        correo: store.state.correo
-        }
-    }
-},
-        act: () => store.state.act
-    },
 })
