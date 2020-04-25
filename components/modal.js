@@ -14,7 +14,7 @@ Vue.component('Modal',{
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="well well-sm">
-                                        <form class="form-horizontal" method="post">
+                                        <form class="form-horizontal" method="post" @submit.prevent="enviar">
                                             <fieldset>
                                                 <legend class="text-center header">Datos</legend>
                                     
@@ -30,7 +30,7 @@ Vue.component('Modal',{
                                                         </div>          
                                                         <div class="col-md-offset-2">
                                                             <div class="form-group">  
-                                                                <input id="cedula" name="name" type="text" placeholder="Cedula" class="form-control" />
+                                                                <input id="cedula" name="name" type="text" placeholder="Cedula" ref="ci" :value="persona.ci" class="form-control" />
                                                              </div>
                                                         </div>
                                                     </div>
@@ -38,12 +38,12 @@ Vue.component('Modal',{
                                                     <div class="row ">  
                                                         <div class="form-group">
                                                             <div class="col-md">
-                                                                <input id="fname" name="name" type="text"   placeholder="Nombre" class="form-control" />
+                                                                <input id="fname" name="name" type="text" ref="nombre" :value="persona.nombre" placeholder="Nombre" class="form-control" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <div class="col-md">
-                                                                <input id="lname" name="name" type="text"   placeholder="Apellido" class="form-control" />
+                                                                <input id="lname" name="name" type="text" ref="apellido" :value="persona.apellido" placeholder="Apellido" class="form-control" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -66,7 +66,7 @@ Vue.component('Modal',{
                                                         <path d="M.05 3.555L8 8.414l7.95-4.859A2 2 0 0014 2H2A2 2 0 00.05 3.555zM16 4.697l-5.875 3.59L16 11.743V4.697zm-.168 8.108L9.157 8.879 8 9.586l-1.157-.707-6.675 3.926A2 2 0 002 14h12a2 2 0 001.832-1.195zM0 11.743l5.875-3.456L0 4.697v7.046z"/>
                                                         </svg></span>                                     
                                                         <div class="col-mx-5 md-6">
-                                                            <input id="email" name="email" type="text" placeholder="Correo" class="form-control" />
+                                                            <input id="email" name="email" type="text" ref="correo" :value="persona.correo" placeholder="Correo" class="form-control" />
                                                         </div>
                                                     </div>           
                                                     <div class="form-group">
@@ -86,4 +86,28 @@ Vue.component('Modal',{
             </div>
         </div>
     `,
+
+
+computed: {
+    persona(){
+        return this.$store.state.persona
+    },
+    // perosnas(){
+    //     return this.$store.state.personas
+    // }
+},
+
+methods: {
+    enviar() {
+        const persona = {
+          nombre: this.$refs.nombre.value,
+          apellido: this.$refs.apellido.value,
+          ci: this.$refs.ci.value,
+        //   sexo: this.$refs.sexo.value,
+          correo: this.$refs.correo.value
+        };
+        this.$store.commit('submitPersonas', persona)
+        console.log(persona);
+      }
+},
 })

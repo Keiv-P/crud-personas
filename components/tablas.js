@@ -15,15 +15,15 @@ Vue.component('Tabla', {
                 </tr>
              </thead>
         <tbody>
-        <!-- <tr         v-for="(persona, index) in personas">
-        <td>            {{ persona.ci }}</td>
+          <tr v-for="(personas, index) in personag">
+             <td>{{ personas }}</td>
   
       <td>            
             <span v-if="act && idac == index">
                 <input v-model="nombreA" type="text" class="form-control">
             </span>
             <span v-else>
-                {{ persona.nombre }}
+                              {{ personas }}
             </span>
         </td>
   
@@ -32,24 +32,25 @@ Vue.component('Tabla', {
                 <input v-model="apellidoA" type="text" class="form-control">
             </span>
             <span v-else>
-                {{ persona.apellido }}
+                              {{ personas }}
             </span>
         </td>
   
                       
-                          <span v-if="act && idac == index">
-                                ut v-model="sexoA" type="text" class="form-control">
-                           </span>
-                          <span>
-                               {{ persona.sexo }}
-                           </span>
+            <span v-if="act && idac == index">
+               <input v-model="sexoA" type="text" class="form-control">
+            </span>
+            <span>
+                               {{ personas }}
+            b 
+            </span>
                         
                 <td>            
             <span v-if="act && idac == index">
                             <input v-model="edadActualizar" type="text" class="form-control">
             </span>
             <span v-else>
-                            {{ persona.correo }}
+                              {{ personas }}
             </span>
         </td>
         <td>        
@@ -60,12 +61,25 @@ Vue.component('Tabla', {
             </span>
             <span v-else>
                             <button data-target="exampleModal" @click="verActualizar(index)" class="btn btn-            warning">Actualizar</button>
-                            <button @click="delet(index)" class="btn btn-danger">Borrar</button>
+                            <button @click="borrar" class="btn btn-danger">Borrar</button>
             </span>
         </td>
-    </tr> -->
+    </tr> 
                   </tbody>
         </table>
     </div> 
     `,
+    computed: {
+        personag(){
+            return this.$store.state.personas
+        },
+        act(){
+            return this.$store.state.act
+        }
+    },
+    methods: {
+        borrar(){
+            this.$store.commit('delet')
+        }
+    }
 })

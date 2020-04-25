@@ -74,11 +74,12 @@ Vue.component('component-1', {
     enviar() {
       const persona = {
         nombre: this.$refs.nombre.value,
-        edad: 20,
-        sexo: 'M',
-        ci: 102391301,
+        apellido: this.$refs.apellido.vale,
+        ci: this.$refs.ci.value,
+        sexo: this.$refs.sexo.value,
+        correo: this.$refs.correo.value
       };
-      this.$store.commit('enviarPersona', persona)
+      this.$store.commit('submitPersonas', persona)
       console.log(persona);
     }
   }

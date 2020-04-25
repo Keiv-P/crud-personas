@@ -15,17 +15,17 @@
         <header>
             <Navbar />
         </header>
-
         <template>
+             <Modal/>
+         </template>
+
+        <!-- <template>
             <component-1></component-1>
-        </template>
+        </template> -->
 
         <main class="container mt-5">
             <Tabla />
 
-            <template>
-                <Modal />
-            </template>
         </main>
 
     </div>
@@ -55,7 +55,7 @@
     <script>
         const app = new Vue({
             el: '#app',
-            store: myStore
+            store
         })
     </script>
     
