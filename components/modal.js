@@ -108,6 +108,7 @@ methods: {
         };
         this.$store.commit('submitPersonas', persona)
         console.log(persona);
+
       }
 },
 })

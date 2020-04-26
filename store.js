@@ -14,12 +14,12 @@ const store = new Vuex.Store({
     },
     mutations: {
       submitPersonas(state, persona){
-        state.personas.push(),
-        state.persona = persona,
+        state.personas.push(
+        state.persona = persona,)
         localStorage.setItem('data', JSON.stringify(state.personas))
       },
       delet(state, index){
-        state.persona.splice=index    
+        state.persona.splice(index)    
            
 
        },

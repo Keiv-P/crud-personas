@@ -15,15 +15,15 @@ Vue.component('Tabla', {
                 </tr>
              </thead>
         <tbody>
-          <tr v-for="(personas, index) in personag">
-             <td>{{ personas }}</td>
+          <tr v-for="(persona, index) in personas">
+             <td>{{ persona.ci }}</td>
   
       <td>            
             <span v-if="act && idac == index">
                 <input v-model="nombreA" type="text" class="form-control">
             </span>
             <span v-else>
-                              {{ personas }}
+                              {{ persona.nombre }}
             </span>
         </td>
   
@@ -32,7 +32,7 @@ Vue.component('Tabla', {
                 <input v-model="apellidoA" type="text" class="form-control">
             </span>
             <span v-else>
-                              {{ personas }}
+                              {{ persona.apellido }}
             </span>
         </td>
   
@@ -41,7 +41,7 @@ Vue.component('Tabla', {
                <input v-model="sexoA" type="text" class="form-control">
             </span>
             <span>
-                               {{ personas }}
+                               {{ persona.sexo }}
             b 
             </span>
                         
@@ -50,7 +50,7 @@ Vue.component('Tabla', {
                             <input v-model="edadActualizar" type="text" class="form-control">
             </span>
             <span v-else>
-                              {{ personas }}
+                              {{ persona.correo }}
             </span>
         </td>
         <td>        
@@ -70,7 +70,7 @@ Vue.component('Tabla', {
     </div> 
     `,
     computed: {
-        personag(){
+        personas(){
             return this.$store.state.personas
         },
         act(){
