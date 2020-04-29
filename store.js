@@ -1,8 +1,5 @@
 const store = new Vuex.Store({
     state: {
-      count: 0,
-      idac: -1,
-      act: false,
       personas: [],
       persona: {
         nombre: '',
@@ -11,15 +8,17 @@ const store = new Vuex.Store({
         sexo: '',
         correo: ''
       },
+      idac: -1,
+      act: false,
     },
-    mutations: {
+      mutations: {
       submitPersonas(state, persona){
         state.personas.push(
         state.persona = persona,)
         localStorage.setItem('data', JSON.stringify(state.personas))
       },
       delet(state, index){
-        state.persona.splice(index)    
+        state.personas.splice(index, 1)    
            
 
        },
@@ -31,26 +30,5 @@ const store = new Vuex.Store({
         state.act = false
 
       },
-
-      increment(state) {
-        if(state.count >= 20)
-          state.count = 20;
-        else
-          state.count++;
-      },
-      decrease(state) {
-        if(state.count <= 0)
-          state.count = 0;
-        else
-          state.count--;
-      },
-      submitCount(state, number) {
-        if(number >= 20)
-          state.count = 20;
-        else if(number <= 0)
-          state.count = 0;
-        else
-          state.count = number;
-      }
     }
 });

@@ -4,7 +4,7 @@ Vue.component('Tabla', {
         <caption><h4> Personas </h4></caption>
         <hr>
           <table class="table table-striped">
-            <thead>
+            <thead class="thead-light">
                 <tr>
                     <th scope="col">CI</th>
                     <th scope="col">Nombre</th>
@@ -13,11 +13,10 @@ Vue.component('Tabla', {
                     <th scope="col">Correo</th>
                     <th scope="col">Accion</th>
                 </tr>
-<<<<<<< HEAD
              </thead>
         <tbody>
           <tr v-for="(persona, index) in personas">
-             <td>{{ persona.ci }}</td>
+                            <td>{{ persona.ci }}</td>
   
       <td>            
             <span v-if="act && idac == index">
@@ -43,7 +42,7 @@ Vue.component('Tabla', {
             </span>
             <span>
                                {{ persona.sexo }}
-            b 
+            
             </span>
                         
                 <td>            
@@ -56,43 +55,6 @@ Vue.component('Tabla', {
         </td>
         <td>        
                     
-=======
-            </thead>
-            <tbody>
-                <tr v-for="(personas, index) in personag">
-                    <td>{{ personas }}</td>
-  
-                    <td>            
-                        <span v-if="act && idac == index">
-                            <input v-model="nombreA" type="text" class="form-control">
-                        </span>
-                        <span v-else>
-                              {{ personas }}
-                        </span>
-                    </td>
-  
-                    <td>            
-                        <span v-if="act && idac == index">
-                            <input v-model="apellidoA" type="text" class="form-control">
-                        </span>
-                        <span v-else>
-                            {{ personas }}
-                        </span>
-                    </td>
-  
-                        <!-- SPAN ESTA AFUERA DEBERIA ESTAR DENTRO DE UN TD  -->
-                        <span v-if="act && idac == index">
-                           <input v-model="sexoA" type="text" class="form-control">
-                        </span>
-                        <span>{{ personas }}</span>
-
-                    <td>            
-                        <span v-if="act && idac == index">
-                            <input v-model="edadActualizar" type="text" class="form-control">
-                        </span>
-                        <span v-else>{{ personas }}</span>
-                    </td>
->>>>>>> 6637b664a5de09d2a8b3bce10635ba040160b4db
 
                     <td>  
                         <span v-if="act && idac == index">

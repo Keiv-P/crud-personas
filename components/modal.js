@@ -18,34 +18,33 @@ Vue.component('Modal',{
                                             <fieldset>
                                                 <legend class="text-center header">Datos</legend>
                                     
-                                                <div class="row ">
-                                                    <div class="form-group text-center"> 
-                                                        <div class="col-md-offset-2 ml-3">
+                                                <div class="row">
+                                                   <div class="row ">                                                    
+                                                        <div class="form-group"> 
+                                                            <div class="col-md">
                                                             <select class="custom-select " id="inlineFormCustomSelectPref">
                                                                 <option selected></option>
                                                                 <option value="1">V</option>
                                                                 <option value="2">E</option>
-                                                            </select>
-                                            
-                                                        </div>          
-                                                        <div class="col-md-offset-2">
+                                                            </select>                                            
+                                                            </div>     
+                                                        </div>     
+                                                               
+                                                        <div class="col-md-offside-2">
                                                             <div class="form-group">  
-                                                                <input id="cedula" name="name" type="text" placeholder="Cedula" ref="ci" :value="persona.ci" class="form-control" />
+                                                                <input id="cedula" name="cd" type="text" placeholder="Cedula" ref="ci" :value="persona.ci" class="form-control" />
                                                              </div>
                                                         </div>
                                                     </div>
+                                                    
 
-                                                    <div class="row ">  
-                                                        <div class="form-group">
+                                                    <div class="form-row">                                                          
                                                             <div class="col-md">
                                                                 <input id="fname" name="name" type="text" ref="nombre" :value="persona.nombre" placeholder="Nombre" class="form-control" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
+                                                            </div>                                                     
                                                             <div class="col-md">
-                                                                <input id="lname" name="name" type="text" ref="apellido" :value="persona.apellido" placeholder="Apellido" class="form-control" />
-                                                            </div>
-                                                        </div>
+                                                                <input id="lname" name="apelldo" type="text" ref="apellido" :value="persona.apellido" placeholder="Apellido" class="form-control" />
+                                                            </div>                                                        
                                                     </div>
 
 
@@ -58,8 +57,7 @@ Vue.component('Modal',{
                                                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
                                                             <label class="form-check-label" for="inlineRadio2">Femenino</label>
                                                         </div>
-                                                     </div>
-                                      
+                                                     </div>                                     
             
                                                     <div class="form-group">
                                                         <span class="col-md-1 col-md-offset-2 text-center"><svg class="bi bi-envelope-fill bigicon" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -69,13 +67,11 @@ Vue.component('Modal',{
                                                             <input id="email" name="email" type="text" ref="correo" :value="persona.correo" placeholder="Correo" class="form-control" />
                                                         </div>
                                                     </div>           
-                                                    <div class="form-group">
-                                                        <div class="col-md-12 text-center">
-                                                            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </fieldset>
+                                                    
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                    
                                         </form>
                                     </div>
                                 </div>
@@ -92,9 +88,6 @@ computed: {
     persona(){
         return this.$store.state.persona
     },
-    // perosnas(){
-    //     return this.$store.state.personas
-    // }
 },
 
 methods: {
