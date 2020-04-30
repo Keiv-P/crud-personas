@@ -47,7 +47,7 @@ Vue.component('Modal',{
             
                                                     <div class="form-group">                                                                                           
                                                         <div class="col-mx-5 md-6">
-                                                            <input id="email" name="email" type="text" ref="correo" :value="persona.correo" placeholder="Edad" class="form-control" />
+                                                            <input id="edad" name="edad" type="text" ref="edad" :value="persona.edad" placeholder="Edad" class="form-control" />
                                                         </div>
                                                     </div>  
                                                     <div class="form-group">
@@ -63,8 +63,13 @@ Vue.component('Modal',{
                                                     </div>                      
                                                 </div>                      
                                             </div>
-                                            </fieldset>                                                    
-                                            <button type="submit" class="btn btn-success float-right">Submit</button>                                                    
+                                            </fieldset>
+                                            <span v-if = "id >= 0">                                                    
+                                            <button type="submit" class="btn btn-success float-right">Guardar</button>
+                                            </span>
+                                            <span v-else>                                                    
+                                            <button type="submit" class="btn btn-success float-right">Submit</button>
+                                            </span>                                                    
                                         </form>
                                     </div>
                                 </div>
@@ -78,9 +83,7 @@ Vue.component('Modal',{
 
 
 computed: {
-    persona(){
-        return this.$store.state.persona
-    },
+   ...Vuex.mapState(['persona', 'id', 'index'])
 },
 
 methods: {
@@ -90,7 +93,7 @@ methods: {
           apellido: this.$refs.apellido.value,
           ci: this.$refs.ci.value,
         //   sexo: this.$refs.sexo.value,
-          correo: this.$refs.correo.value
+          correo: this.$refs.edad.value
         };
         this.$store.commit('submitPersonas', persona)
         console.log(persona);

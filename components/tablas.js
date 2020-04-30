@@ -10,7 +10,7 @@ Vue.component('Tabla', {
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
                     <th scope="col">Sexo</th>
-                    <th scope="col">Correo</th>
+                    <th scope="col">Edad</th>
                     <th scope="col">Accion</th>
                 </tr>
              </thead>
@@ -20,10 +20,10 @@ Vue.component('Tabla', {
               <td>{{ persona.nombre }}</td> 
               <td>{{ persona.apellido }}</td>  
               <td>{{ persona.sexo }}</td>                        
-              <td>{{ persona.correo }}</td>
+              <td>{{ persona.edad }}</td>
               <td> 
-                  <button data-toggle="modal" data-target="#staticBackdrop" @click="obtenerPersona(index)" class="btn btn-info">Editar</button>
-                  <button @click="borrar" class="btn btn-danger">Borrar</button>
+                  <button data-toggle="modal" data-target="#staticBackdrop" @click="obtenerPersonas(index)" class="btn btn-info">Editar</button>
+                  <button @click="delet" class="btn btn-danger">Borrar</button>
               </td>
             </tr> 
          </tbody>
@@ -33,15 +33,10 @@ Vue.component('Tabla', {
     computed: {
         personas(){
             return this.$store.state.personas
-        }
-       
+        }       
     },
     methods: {
-        borrar(){
-            this.$store.commit('delet')
+        ...Vuex.mapMutations(['delet', 'obtenerPersonas'])
         },
-        obtenerPersona(index){
-            this.$store.commit('obtenerPersonas', index)
-        }
-    }
+    
 })
