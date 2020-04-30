@@ -8,8 +8,7 @@ const store = new Vuex.Store({
         sexo: '',
         correo: ''
       },
-      idac: -1,
-      act: false,
+      id: null
     },
       mutations: {
       submitPersonas(state, persona){
@@ -18,17 +17,14 @@ const store = new Vuex.Store({
         localStorage.setItem('data', JSON.stringify(state.personas))
       },
       delet(state, index){
-        state.personas.splice(index, 1)    
-           
-
+        state.personas.splice(index, 1)  
        },
-      verActualizar(state, index){
-        state.idac= index,
-        state.act= false
-      },
-      submitActualizar(state,){
-        state.act = false
+      obtenerPersonas(state, index){
+        state.id = index
 
       },
+
+
+   
     }
 });
