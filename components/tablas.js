@@ -18,25 +18,25 @@ Vue.component('Tabla', {
           <tr v-for="(persona, index) in personas">
                             <td>{{ persona.ci }}</td>
   
-      <td>            
+          <td>            
             <span v-if="act && idac == index">
                 <input v-model="nombreA" type="text" class="form-control">
             </span>
             <span v-else>
                               {{ persona.nombre }}
             </span>
-        </td>
+          </td>
   
-      <td>            
+           <td>            
             <span v-if="act && idac == index">
                 <input v-model="apellidoA" type="text" class="form-control">
             </span>
             <span v-else>
                               {{ persona.apellido }}
             </span>
-        </td>
+          </td>
   
-                      
+             <td>         
             <span v-if="act && idac == index">
                <input v-model="sexoA" type="text" class="form-control">
             </span>
@@ -44,6 +44,7 @@ Vue.component('Tabla', {
                                {{ persona.sexo }}
             
             </span>
+            </td>
                         
                 <td>            
             <span v-if="act && idac == index">
@@ -53,16 +54,16 @@ Vue.component('Tabla', {
                               {{ persona.correo }}
             </span>
         </td>
-        <td>        
+              
                     
 
                     <td>  
                         <span v-if="act && idac == index">
-                            <button @click="submitActualizar(index)" class="btn btn-success">Guardar</button>
+                            <button @click="submitActualizar(index)" class="btn btn-info">Guardar</button>
                         </span>
                         
                         <span v-else>
-                            <button data-target="exampleModal" @click="verActualizar(index)" class="btn     btn-warning">Actualizar</button>
+                            <button data-target="exampleModal" @click="verActualizar(index)" class="btn btn-info">Actualizar</button>
                             <button @click="borrar" class="btn btn-danger">Borrar</button>
                         </span>
                     </td>
