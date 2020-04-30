@@ -12,15 +12,13 @@ const store = new Vuex.Store({
     },
       mutations: {
       submitPersonas(state, persona){
-        const personass = JSON.parse(localStorage.getItem('personas'));
-        state.personas.push(
-        state.persona = persona,)
+        state.personas.push(persona);
         localStorage.setItem('data', JSON.stringify(state.personas))
       },
       delet(state, index){
         state.personas.splice(index, 1)  
        },
-      obtenerPersonas(state, index){
+      obtenerPersona(state, index){
         
         const persona = state.personas.find((person, inde) => inde === index)
         state.persona = persona
@@ -29,8 +27,5 @@ const store = new Vuex.Store({
       editarPersona(){
 
       }
-
-
-   
     }
 });

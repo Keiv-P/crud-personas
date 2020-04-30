@@ -22,7 +22,7 @@ Vue.component('Tabla', {
               <td>{{ persona.sexo }}</td>                        
               <td>{{ persona.edad }}</td>
               <td> 
-                  <button data-toggle="modal" data-target="#staticBackdrop" @click="obtenerPersonas(index)" class="btn btn-info">Editar</button>
+                  <button data-toggle="modal" data-target="#form-modal" @click="obtenerPersona(index)" class="btn btn-info">Editar</button>
                   <button @click="delet" class="btn btn-danger">Borrar</button>
               </td>
             </tr> 
@@ -31,12 +31,10 @@ Vue.component('Tabla', {
     </div> 
     `,
     computed: {
-        personas(){
-            return this.$store.state.personas
-        }       
+       ...Vuex.mapState(['personas'])
     },
     methods: {
-        ...Vuex.mapMutations(['delet', 'obtenerPersonas'])
-        },
+        ...Vuex.mapMutations(['delet', 'obtenerPersona'])
+    },
     
 })
