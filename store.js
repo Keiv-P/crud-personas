@@ -20,6 +20,8 @@ const store = new Vuex.Store({
         state.personas.splice(index, 1)  
        },
       obtenerPersonas(state, index){
+        const persona = state.personas.find((person, inde) => inde === index)
+        state.persona = persona
         state.id = index
 
       },

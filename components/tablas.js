@@ -16,74 +16,32 @@ Vue.component('Tabla', {
              </thead>
         <tbody>
           <tr v-for="(persona, index) in personas">
-                            <td>{{ persona.ci }}</td>
-  
-          <td>            
-            <span v-if="act && idac == index">
-                <input v-model="nombreA" type="text" class="form-control">
-            </span>
-            <span v-else>
-                              {{ persona.nombre }}
-            </span>
-          </td>
-  
-           <td>            
-            <span v-if="act && idac == index">
-                <input v-model="apellidoA" type="text" class="form-control">
-            </span>
-            <span v-else>
-                              {{ persona.apellido }}
-            </span>
-          </td>
-  
-             <td>         
-            <span v-if="act && idac == index">
-               <input v-model="sexoA" type="text" class="form-control">
-            </span>
-            <span>
-                               {{ persona.sexo }}
-            
-            </span>
-            </td>
-                        
-                <td>            
-            <span v-if="act && idac == index">
-                            <input v-model="edadActualizar" type="text" class="form-control">
-            </span>
-            <span v-else>
-                              {{ persona.correo }}
-            </span>
-        </td>
-              
-                    
-
-                    <td>  
-                        <span v-if="act && idac == index">
-                            <button @click="submitActualizar(index)" class="btn btn-info">Guardar</button>
-                        </span>
-                        
-                        <span v-else>
-                            <button data-target="exampleModal" @click="verActualizar(index)" class="btn btn-info">Actualizar</button>
-                            <button @click="borrar" class="btn btn-danger">Borrar</button>
-                        </span>
-                    </td>
-
-                </tr> 
-            </tbody>
+              <td>{{ persona.ci }}</td>  
+              <td>{{ persona.nombre }}</td> 
+              <td>{{ persona.apellido }}</td>  
+              <td>{{ persona.sexo }}</td>                        
+              <td>{{ persona.correo }}</td>
+              <td> 
+                  <button data-toggle="modal" data-target="#staticBackdrop" @click="obtenerPersona(index)" class="btn btn-info">Editar</button>
+                  <button @click="borrar" class="btn btn-danger">Borrar</button>
+              </td>
+            </tr> 
+         </tbody>
         </table>
     </div> 
     `,
     computed: {
         personas(){
             return this.$store.state.personas
-        },
-        act(){
-            return this.$store.state.act
         }
+       
     },
     methods: {
         borrar(){
             this.$store.commit('delet')
+        },
+        obtenerPersona(index){
+            this.$store.commit('obtenerPersonas', index)
         }
     }
 })
