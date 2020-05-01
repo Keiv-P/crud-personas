@@ -15,8 +15,7 @@ Vue.component('Formulario', {
             type="text"
             class="form-control"
             placeholder="cedula"
-            :value="persona.ci"
-            ref="cedula"
+            v-model="persona.cedula"
           />
         </div>
 
@@ -25,8 +24,7 @@ Vue.component('Formulario', {
             type="text"
             class="form-control"
             placeholder="Nombre"
-            :value="persona.nombre"
-            ref="nombre"
+            v-modal="persona.nombre"
           />    
         </div>
 
@@ -35,8 +33,7 @@ Vue.component('Formulario', {
             type="text"
             class="form-control"
             placeholder="apellido"
-            :value="persona.apellido"
-            ref="apellido"
+            v-modal="persona.apellido"
           />
         </div>
 
@@ -45,8 +42,7 @@ Vue.component('Formulario', {
             type="text"
             class="form-control"
             placeholder="edad"
-            :value="persona.edad"
-            ref="edad"
+            v-modal="persona.edad"
           />
         </div>
 
@@ -57,6 +53,7 @@ Vue.component('Formulario', {
               id="sexo-m"
               value="M"
               class="form-check-input"
+              v-model="persona.sexo"
             />
             <label for="sexo-m" class="form-check-label">Masculino</label>
           </div>
@@ -67,6 +64,7 @@ Vue.component('Formulario', {
               id="sexo-f"
               value="F"
               class="form-check-input"
+              v-model="persona.sexo"
             />
             <label for="sexo-f" class="form-check-label">Femenino</label>
           </div>
@@ -82,19 +80,14 @@ Vue.component('Formulario', {
     </form>
   `,
   computed: {
-    ...Vuex.mapState(['persona', 'id', 'index'])
+    ...Vuex.mapState(['persona', 'id', 'index']),
+    ...Vuex.mapMutations(['submitPersonas',])
   },
  
   methods: {
-    enviar() {
-      const persona = {
-        ci: this.$refs.cedula.value,
-        nombre: this.$refs.nombre.value,
-        apellido: this.$refs.apellido.value,
-        edad: this.$refs.edad.value,
-        sexo: '',
-      }
-      this.$store.commit('submitPersonas', persona);
+    enviar() {          
+      this.$store.commit('submitPersonas', this.persona)
+      $('#form-modal').modal('hide')
     }
   },
 })

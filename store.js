@@ -4,7 +4,7 @@ const store = new Vuex.Store({
       persona: {
         nombre: '',
         apellido: '',
-        ci:'',
+        cedula:'',
         sexo: '',
         edad: ''
       },
