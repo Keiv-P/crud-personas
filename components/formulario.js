@@ -24,7 +24,7 @@ Vue.component('Formulario', {
             type="text"
             class="form-control"
             placeholder="Nombre"
-            v-modal="persona.nombre"
+            v-model="persona.nombre"
           />    
         </div>
 
@@ -33,7 +33,7 @@ Vue.component('Formulario', {
             type="text"
             class="form-control"
             placeholder="apellido"
-            v-modal="persona.apellido"
+            v-model="persona.apellido"
           />
         </div>
 
@@ -42,7 +42,7 @@ Vue.component('Formulario', {
             type="text"
             class="form-control"
             placeholder="edad"
-            v-modal="persona.edad"
+            v-model="persona.edad"
           />
         </div>
 
@@ -80,13 +80,18 @@ Vue.component('Formulario', {
     </form>
   `,
   computed: {
-    ...Vuex.mapState(['persona', 'id', 'index']),
-    ...Vuex.mapMutations(['submitPersonas',])
+    ...Vuex.mapState(['persona', 'id']),
   },
- 
   methods: {
-    enviar() {          
-      this.$store.commit('submitPersonas', this.persona)
+    ...Vuex.mapMutations(['registrarPersona', 'editarPersona']),
+    enviar() {
+      // SI EL ID CONTIENE ALGUN INDEX EDITAR
+      // se puede ejecutar los mutations asi porque la trae el mapMutations
+      if(this.id !== null) this.editarPersona(this.persona);
+      // SINO REGISTRAR
+      else this.registrarPersona(this.persona);
+      
+        // CERRAR MODAL
       $('#form-modal').modal('hide')
     }
   },

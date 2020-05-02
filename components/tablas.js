@@ -16,14 +16,14 @@ Vue.component('Tabla', {
              </thead>
         <tbody>
           <tr v-for="(persona, index) in personas">
-              <td>{{ persona.ci }}</td>  
+              <td>{{ persona.cedula }}</td>  
               <td>{{ persona.nombre }}</td> 
               <td>{{ persona.apellido }}</td>  
               <td>{{ persona.sexo }}</td>                        
               <td>{{ persona.edad }}</td>
               <td> 
                   <button data-toggle="modal" data-target="#form-modal" @click="obtenerPersona(index)" class="btn btn-info">Editar</button>
-                  <button @click="delet" class="btn btn-danger">Borrar</button>
+                  <button @click="eliminarPersona(index)" class="btn btn-danger">Borrar</button>
               </td>
             </tr> 
          </tbody>
@@ -34,7 +34,7 @@ Vue.component('Tabla', {
        ...Vuex.mapState(['personas'])
     },
     methods: {
-        ...Vuex.mapMutations(['delet', 'obtenerPersona'])
+        ...Vuex.mapMutations(['eliminarPersona', 'obtenerPersona'])
     },
     
 })

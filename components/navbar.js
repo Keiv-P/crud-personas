@@ -11,10 +11,17 @@ Vue.component('Navbar', {
          </div>
       </nav>
         <div class="mx-5 my-5">
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#form-modal">
-            REGISTRAR
+            <button
+              @click="vaciarFormulario()"
+              type="button" 
+              class="btn btn-success" 
+              data-toggle="modal" data-target="#form-modal">
+                REGISTRAR
             </button>
         </div>
     </div>
     `,
+    methods: {
+      ...Vuex.mapMutations(['vaciarFormulario'])
+    }
 })
